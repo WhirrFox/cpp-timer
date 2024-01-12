@@ -45,7 +45,6 @@ Timer createTimer() {
     std::cin >> time;
     Timer t;
     if (t.parseString(time)) {
-        DateTime a(t);
         return t;
     }
 

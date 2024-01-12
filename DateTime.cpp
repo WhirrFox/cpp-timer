@@ -4,19 +4,17 @@
 #include <iostream>
 
 void DateTime::init() {
-    if (false) {
-        auto now = std::chrono::system_clock::now();
-        std::time_t time = std::chrono::system_clock::to_time_t(now);
+    auto now = std::chrono::system_clock::now();
+    std::time_t time = std::chrono::system_clock::to_time_t(now);
+    tm *l = localtime(&time);
 
-        year = localtime(&time)->tm_year;
-        month = localtime(&time)->tm_mon + 1;
-        date = localtime(&time)->tm_mday;
-    }
-    time_t now;
-    time(&now);
-    char buf[sizeof "2024-01-11T21:24:00"];
-    strftime(buf, sizeof buf, "%FT%T", gmtime(&now));
-    std::cout << buf << std::endl;
+    year = l->tm_year + 1900;
+    month = l->tm_mon + 1;
+    date = l->tm_mday;
+
+    hour = l->tm_hour;
+    minute = l->tm_min;
+    second = l->tm_sec;
 }
 
 int DateTime::getDate() const {
