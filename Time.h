@@ -5,9 +5,11 @@
 
 class Time {
 protected:
-    int hour;
-    int minute;
-    int second;
+    int hour{};
+    int minute{};
+    int second{};
+
+    void saveValues(int count, std::string token);
 public:
     Time() = default;
     Time(int hour, int minute, int second);

@@ -16,7 +16,6 @@ bool menu() {
     cin >> a;
     switch (a[0]) {
         case 'n':
-            cout << "new";
             createTimer().run();
             break;
         case 'h':
