@@ -12,3 +12,5 @@ add_executable(Timer main.cpp
         time/Timer.h
         Util.h
         Util.cpp)
+
+target_link_libraries(Timer winmm)

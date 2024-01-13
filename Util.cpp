@@ -1,6 +1,7 @@
 #include "Util.h"
 #include <sstream>
 #include <iostream>
+#include <windows.h>
 
 using namespace std;
 
@@ -21,4 +22,8 @@ void clear() {
     for (int i = 0; i < 50; i++) {
         cout << endl;
     }
+}
+
+void playSound() {
+    PlaySound("..\\sound.wav", NULL, SND_ASYNC);
 }

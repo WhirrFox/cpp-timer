@@ -3,6 +3,7 @@
 #include <thread>
 #include "Timer.h"
 #include "DateTime.h"
+#include "../Util.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ void Timer::run() {
         tick();
         this_thread::sleep_for(chrono::milliseconds(1000));
     }
+    playSound();
     dt.saveEntry();
 }
 
