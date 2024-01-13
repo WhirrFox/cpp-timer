@@ -1,6 +1,7 @@
 #include "Time.h"
 #include <cstring>
 #include <iostream>
+#include "../Util.h"
 
 Time::Time(int hour, int minute, int second) {
     this->hour = hour;
@@ -14,21 +15,8 @@ Time::Time(Time &t) {
     second = t.second;
 }
 
-std::string Time::formatTime() {
-    std::ostringstream s;
-    if (hour < 10)
-        s << "0";
-    s << hour << ":";
-
-    if (minute < 10)
-        s << "0";
-    s << minute << ":";
-
-    if (second < 10)
-        s << "0";
-    s << second;
-
-    return s.str();
+std::string Time::str() {
+    return formatInt(hour, 2) + ":" + formatInt(minute, 2) + ":" + formatInt(second, 2);
 }
 
 // 12:34:56

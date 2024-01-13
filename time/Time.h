@@ -15,7 +15,8 @@ public:
     Time(int hour, int minute, int second);
     Time(Time &t);
     virtual ~Time() = default;
-    std::string formatTime();
+
+    virtual std::string str();
     // returns true if time was parsed correct
     bool parseString(std::string);
 

@@ -16,6 +16,10 @@ public:
     DateTime(int year, int month, int date, int hour, int minute, int second);
     DateTime(Timer &t);
 
+    std::string str();
+
+    void saveEntry();
+
     int getDate() const;
     void setDate(int date);
     int getMonth() const;

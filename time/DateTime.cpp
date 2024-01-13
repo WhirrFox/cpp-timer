@@ -2,10 +2,15 @@
 #include <chrono>
 #include <ctime>
 #include <iostream>
+#include <sstream>
+#include <fstream>
+#include "../Util.h"
+
+using namespace std;
 
 void DateTime::init() {
-    auto now = std::chrono::system_clock::now();
-    std::time_t time = std::chrono::system_clock::to_time_t(now);
+    auto now = chrono::system_clock::now();
+    time_t time = chrono::system_clock::to_time_t(now);
     tm *l = localtime(&time);
 
     year = l->tm_year + 1900;
@@ -50,4 +55,19 @@ DateTime::DateTime(int year, int month, int date, int hour, int minute, int seco
 DateTime::DateTime(Timer &t) : Time() {
     init();
     timer = t;
+}
+
+string DateTime::str() {
+    return formatInt(year, 2) + "-" + formatInt(month, 2) + "-" + formatInt(date, 2) +
+           "T" + Time::str() + "," + timer.str();
+}
+
+void DateTime::saveEntry() {
+    ofstream f;
+    f.open("log.csv", ios_base::app);
+
+    f << str();
+    f << "\n";
+
+    f.close();
 }

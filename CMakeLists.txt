@@ -9,4 +9,6 @@ add_executable(Timer main.cpp
         time/DateTime.cpp
         time/DateTime.h
         time/Timer.cpp
-        time/Timer.h)
+        time/Timer.h
+        Util.h
+        Util.cpp)

@@ -4,6 +4,8 @@
 #include "Timer.h"
 #include "DateTime.h"
 
+using namespace std;
+
 Timer::Timer(int hour, int minute, int second) : Time (hour, minute, second){}
 
 bool Timer::isDone() {
@@ -32,17 +34,19 @@ bool Timer::tick() {
 }
 
 void Timer::run() {
+    DateTime dt(*this);
     while (!isDone()) {
-        std::cout << "\r" << formatTime() << std::flush;
+        cout << "\r" << str() << flush;
         tick();
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        this_thread::sleep_for(chrono::milliseconds(1000));
     }
+    dt.saveEntry();
 }
 
 Timer createTimer() {
-    std::cout << "enter time: " << std::flush;
-    std::string time;
-    std::cin >> time;
+    cout << "enter time: " << flush;
+    string time;
+    cin >> time;
     Timer t;
     if (t.parseString(time)) {
         return t;
