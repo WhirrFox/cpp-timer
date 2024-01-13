@@ -1,7 +1,11 @@
 #include "Util.h"
 #include <sstream>
 #include <iostream>
+
+#ifdef _WIN32
 #include <windows.h>
+
+#endif
 
 using namespace std;
 
@@ -25,5 +29,7 @@ void clear() {
 }
 
 void playSound() {
+#ifdef _WIN32
     PlaySound("..\\sound.wav", NULL, SND_ASYNC);
+#endif
 }
