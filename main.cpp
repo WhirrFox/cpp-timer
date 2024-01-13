@@ -1,11 +1,15 @@
 #include <iostream>
 #include "time/Timer.h"
 #include "Util.h"
+#include "History.h"
 
 using namespace std;
 
 bool menu() {
     clear();
+    cout << "Timer" << endl;
+    printLine(15);
+
     cout << "[n] new timer" << endl << "[h] history" << endl << "[q] quit" << endl;
     string a;
     cin >> a;
@@ -14,7 +18,7 @@ bool menu() {
             createTimer().run();
             break;
         case 'h':
-            cout << "hist";
+            historyMenu();
             break;
         case 'q':
             return false;
@@ -23,7 +27,6 @@ bool menu() {
 }
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
     while (menu()) {}
     return 0;
 }

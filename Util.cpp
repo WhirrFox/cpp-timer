@@ -1,5 +1,4 @@
 #include "Util.h"
-#include <sstream>
 #include <iostream>
 
 #ifdef _WIN32
@@ -26,6 +25,14 @@ void clear() {
     for (int i = 0; i < 50; i++) {
         cout << endl;
     }
+}
+
+void printLine(int length) {
+    while (length) {
+        cout << "=";
+        length--;
+    }
+    cout << endl;
 }
 
 void playSound() {

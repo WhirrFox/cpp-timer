@@ -6,4 +6,6 @@
 
 void saveEntry(DateTime dt);
 
+void historyMenu();
+
 #endif //TIMER_HISTORY_H
