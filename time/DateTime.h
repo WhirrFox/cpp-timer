@@ -18,8 +18,6 @@ public:
 
     std::string str();
 
-    void saveEntry();
-
     int getDate() const;
     void setDate(int date);
     int getMonth() const;

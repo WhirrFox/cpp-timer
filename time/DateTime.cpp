@@ -2,8 +2,6 @@
 #include <chrono>
 #include <ctime>
 #include <iostream>
-#include <sstream>
-#include <fstream>
 #include "../Util.h"
 
 using namespace std;
@@ -60,14 +58,4 @@ DateTime::DateTime(Timer &t) : Time() {
 string DateTime::str() {
     return formatInt(year, 2) + "-" + formatInt(month, 2) + "-" + formatInt(date, 2) +
            "T" + Time::str() + "," + timer.str();
-}
-
-void DateTime::saveEntry() {
-    ofstream f;
-    f.open("log.csv", ios_base::app);
-
-    f << str();
-    f << "\n";
-
-    f.close();
 }

@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include "DateTime.h"
 #include "../Util.h"
+#include "../History.h"
 
 using namespace std;
 
@@ -42,7 +43,7 @@ void Timer::run() {
         this_thread::sleep_for(chrono::milliseconds(1000));
     }
     playSound();
-    dt.saveEntry();
+    saveEntry(dt);
 }
 
 Timer createTimer() {
