@@ -44,13 +44,19 @@ void Timer::run() {
 }
 
 Timer createTimer() {
-    cout << "enter time: " << flush;
+    cout << "enter time: ";
     string time;
-    cin >> time;
-    Timer t;
-    if (t.parseString(time)) {
-        return t;
-    }
+    while (!time.length())
+        getline(cin, time);
 
-    return createTimer();
+    Timer t;
+    try {
+        t.parseString(time);
+        if (t.getSecond() + t.getMinute() + t.getHour() == 0)
+            return createTimer();
+
+        return t;
+    } catch (...) {
+        return createTimer();
+    }
 }

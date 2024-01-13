@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 string formatInt(int i, int width) {
     if (width != 2) {
         throw "Not implemented";

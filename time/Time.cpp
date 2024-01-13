@@ -1,7 +1,8 @@
 #include "Time.h"
 #include <cstring>
-#include <iostream>
 #include "../Util.h"
+
+using namespace std;
 
 Time::Time(int hour, int minute, int second) {
     this->hour = hour;
@@ -15,46 +16,82 @@ Time::Time(Time &t) {
     second = t.second;
 }
 
-std::string Time::str() {
+string Time::str() {
     return formatInt(hour, 2) + ":" + formatInt(minute, 2) + ":" + formatInt(second, 2);
 }
 
-// 12:34:56
-bool Time::parseString(std::string s) {
+// 12:34:56 or 12h 34m 56(s)
+void Time::parseString(string s) {
+    if (s.find(':') != string::npos) {
+        parse1(s);
+        return;
+    }
+    parse2(s);
+}
+
+void Time::parse1(string s) {
     const char* delimiter = ":";
-    char* token = std::strtok(const_cast<char *>(s.c_str()), delimiter);
+    char *token = strtok(const_cast<char *>(s.c_str()), delimiter);
 
     int count = 0;
     while (token) {
         count++;
         if (count > 3)
-            return false;
+            throw "Wrong format.";
 
-        try {
-            saveValues(count, token);
-        }
-        catch(...) {
-            return false;
-        }
+        parseValues1(count, token);
 
-        token = std::strtok(nullptr, delimiter);
+        token = strtok(nullptr, delimiter);
     }
 
     if (count == 3)
-        return true;
-    return false;
+        throw "Wrong format.";
 }
 
-void Time::saveValues(int count, std::string token) {
+void Time::parseValues1(int count, string token) {
     switch (count) {
         case 1:
-            hour = std::stoi(token);
+            hour = stoi(token);
             break;
         case 2:
-            minute = std::stoi(token);
+            minute = stoi(token);
             break;
         case 3:
-            second = std::stoi(token);
+            second = stoi(token);
+            break;
+    }
+}
+
+void Time::parse2(string s) {
+    const char *delimiter = " ";
+    char *token = strtok(const_cast<char *>(s.c_str()), delimiter);
+
+    while (token) {
+        string str(token);
+        parseValues2(str);
+
+        token = strtok(nullptr, delimiter);
+    }
+}
+
+void Time::parseValues2(std::string s) {
+    if (s.length() == 0)
+        return;
+    if (s.length() == 1) {
+        second += stoi(s);
+        return;
+    }
+
+    int i = stoi(s.substr(0, s.length() - 1));
+    switch (s[s.length() - 1]) {
+        case 'h':
+            hour += i;
+            break;
+        case 'm':
+            minute += i;
+            break;
+        default:
+            second += stoi(s);
             break;
     }
 }

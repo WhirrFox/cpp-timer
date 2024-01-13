@@ -9,7 +9,13 @@ protected:
     int minute{};
     int second{};
 
-    void saveValues(int count, std::string token);
+    void parse1(std::string);
+
+    void parseValues1(int count, std::string token);
+
+    void parse2(std::string);
+
+    void parseValues2(std::string s);
 public:
     Time() = default;
     Time(int hour, int minute, int second);
@@ -17,8 +23,8 @@ public:
     virtual ~Time() = default;
 
     virtual std::string str();
-    // returns true if time was parsed correct
-    bool parseString(std::string);
+
+    void parseString(std::string);
 
     int getHour() const;
     void setHour(int hour);
