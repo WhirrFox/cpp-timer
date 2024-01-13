@@ -1,13 +1,8 @@
 #include <iostream>
 #include "time/Timer.h"
+#include "Util.h"
 
 using namespace std;
-
-void clear() {
-    for (int i = 0; i < 50; i++) {
-        cout << endl;
-    }
-}
 
 bool menu() {
     clear();

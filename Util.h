@@ -6,4 +6,6 @@
 
 std::string formatInt(int i, int width);
 
+void clear();
+
 #endif //TIMER_UTIL_H
