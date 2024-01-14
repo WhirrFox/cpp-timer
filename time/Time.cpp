@@ -119,3 +119,4 @@ int Time::getSecond() const {
 void Time::setSecond(int second) {
     Time::second = second;
 }
+

@@ -5,13 +5,24 @@
 #include "Time.h"
 
 class Timer : public Time {
+private:
+    std::string name;
 public:
     Timer() = default;
     Timer(int hour, int minute, int second);
     bool isDone();
     // returns false if timer is done
     bool tick();
-    void run();
+
+    void run(bool isBreak = false);
+
+    Timer getBreakTimer();
+
+    const std::string &getName() const;
+
+    void setName(const std::string &name);
+
+    int getDurationInSeconds();
 };
 
 Timer createTimer();

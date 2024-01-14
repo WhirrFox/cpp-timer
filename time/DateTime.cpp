@@ -66,11 +66,15 @@ DateTime::DateTime(std::string s) : Time() {
     timer.setHour(stoi(s.substr(20, 2)));
     timer.setMinute(stoi(s.substr(23, 2)));
     timer.setSecond(stoi(s.substr(26, 2)));
+
+    if (s.length() >= 30)
+        timer.setName(s.substr(29, s.length() - 29));
 }
 
 string DateTime::str() {
     return formatInt(year, 2) + "-" + formatInt(month, 2) + "-" + formatInt(date, 2) +
-           "T" + Time::str() + "," + timer.str();
+                                                                  "T" + Time::str() + "," + timer.str() + "," +
+                                                                  timer.getName();
 }
 
 string DateTime::format() {
@@ -84,5 +88,7 @@ string DateTime::format() {
         o << timer.getMinute() << "m ";
     if (timer.getSecond() > 0)
         o << timer.getSecond() << "s";
+
+    o << '\t' << timer.getName();
     return o.str();
 }

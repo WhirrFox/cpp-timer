@@ -5,6 +5,7 @@
 #include "DateTime.h"
 #include "../Util.h"
 #include "../History.h"
+#include "../Settings.h"
 
 using namespace std;
 
@@ -35,31 +36,74 @@ bool Timer::tick() {
     return true;
 }
 
-void Timer::run() {
+void Timer::run(bool isBreak) {
     DateTime dt(*this);
+    Timer breakTimer = getBreakTimer();
+
+    clear();
+    if (isBreak) {
+        cout << "Break" << endl;
+    } else {
+        cout << "Work" << endl;
+    }
+
+    printLine(7);
     while (!isDone()) {
         cout << "\r" << str() << flush;
         tick();
         this_thread::sleep_for(chrono::milliseconds(1000));
     }
     playSound();
+
+    if (isBreak || breakTimer.getDurationInSeconds() < 10)
+        return;
+
     saveEntry(dt);
+    breakTimer.run(true);
+}
+
+Timer Timer::getBreakTimer() {
+    int seconds = getDurationInSeconds();
+    seconds /= timerDevider;
+
+    int newHours = seconds / 3600;
+    seconds %= 3600;
+
+    int newMinutes = seconds / 60;
+    seconds %= 60;
+
+    return {newHours, newMinutes, seconds};
+}
+
+const string &Timer::getName() const {
+    return name;
+}
+
+void Timer::setName(const string &name) {
+    Timer::name = name;
+}
+
+int Timer::getDurationInSeconds() {
+    return hour * 360 + minute * 60 + second;
 }
 
 Timer createTimer() {
-    cout << "enter time: ";
-    string time;
-    while (!time.length())
-        getline(cin, time);
-
     Timer t;
-    try {
-        t.parseString(time);
-        if (t.getSecond() + t.getMinute() + t.getHour() == 0)
-            return createTimer();
+    clear();
+    while (true) {
+        cout << "enter time: ";
+        string time;
+        while (!time.length())
+            getline(cin, time);
 
-        return t;
-    } catch (...) {
-        return createTimer();
+        t.parseString(time);
+        if (t.getSecond() + t.getMinute() + t.getHour() > 0)
+            break;
     }
+
+    cout << "name (optional): ";
+    string name;
+    getline(cin, name);
+    t.setName(name);
+    return t;
 }
