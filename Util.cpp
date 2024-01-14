@@ -39,6 +39,6 @@ void printLine(int length) {
 void playSound() {
 #ifdef _WIN32
     if (enableSound)
-        PlaySound("..\\sound.wav", NULL, SND_ASYNC);
+        PlaySound("sound.wav", NULL, SND_ASYNC);
 #endif
 }

@@ -19,3 +19,6 @@ add_executable(Timer main.cpp
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_link_libraries(Timer winmm)
 endif ()
+
+configure_file(${CMAKE_SOURCE_DIR}/sound.wav ${CMAKE_BINARY_DIR}/sound.wav COPYONLY)
+
