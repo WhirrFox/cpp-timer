@@ -9,8 +9,6 @@
 
 using namespace std;
 
-Timer::Timer(int hour, int minute, int second) : Time (hour, minute, second){}
-
 bool Timer::isDone() {
     return hour == 0 && minute == 0 && second == 0;
 }
@@ -72,14 +70,7 @@ void Timer::run(bool isBreak) {
 Timer Timer::getBreakTimer() {
     int seconds = getDurationInSeconds();
     seconds /= timerDivider;
-
-    int newHours = seconds / 3600;
-    seconds %= 3600;
-
-    int newMinutes = seconds / 60;
-    seconds %= 60;
-
-    return {newHours, newMinutes, seconds};
+    return Timer(seconds);
 }
 
 const string &Timer::getName() const {

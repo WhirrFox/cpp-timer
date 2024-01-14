@@ -16,6 +16,15 @@ Time::Time(Time &t) {
     second = t.second;
 }
 
+Time::Time(int seconds) {
+    hour = seconds / 3600;
+    seconds %= 3600;
+
+    minute = seconds / 60;
+    seconds %= 60;
+    second = seconds;
+}
+
 string Time::str() {
     return formatInt(hour, 2) + ":" + formatInt(minute, 2) + ":" + formatInt(second, 2);
 }

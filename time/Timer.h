@@ -9,8 +9,12 @@ private:
     std::string name;
 public:
     Timer() = default;
-    Timer(int hour, int minute, int second);
+
+    Timer(int hour, int minute, int second) : Time(hour, minute, second) {};
+
+    explicit Timer(int seconds) : Time(seconds) {};
     bool isDone();
+
     // returns false if timer is done
     bool tick();
 

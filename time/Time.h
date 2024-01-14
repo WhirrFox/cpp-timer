@@ -20,6 +20,8 @@ public:
     Time() = default;
     Time(int hour, int minute, int second);
     Time(Time &t);
+
+    explicit Time(int seconds);
     virtual ~Time() = default;
 
     virtual std::string str();
