@@ -96,3 +96,24 @@ bool DateTime::isSameDate(DateTime &d) {
 Timer DateTime::getTimer() {
     return timer;
 }
+
+void DateTime::printResult() {
+    clear();
+    cout << "Done" << endl;
+    printLine(15);
+
+    if (!timer.getName().empty()) {
+        cout << endl << timer.getName() << endl;
+    }
+
+    cout << endl << "Time learned: " << timer.format() << endl;
+    string breakTime = timer.getBreakTimer().format();
+
+    if (!breakTime.empty())
+        cout << "Break time: " << breakTime << endl;
+
+    cout << endl << "Press return to go back to main menu";
+
+    string s;
+    getline(cin, s);
+}

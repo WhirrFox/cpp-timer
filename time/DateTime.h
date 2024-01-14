@@ -23,6 +23,8 @@ public:
 
     std::string format();
 
+    void printResult();
+
     bool isSameDate(DateTime &d);
 
     int getDate() const;

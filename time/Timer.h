@@ -7,6 +7,8 @@
 class Timer : public Time {
 private:
     std::string name;
+
+    void printHeadline(bool isBreak);
 public:
     Timer() = default;
 

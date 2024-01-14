@@ -34,10 +34,7 @@ bool Timer::tick() {
     return true;
 }
 
-void Timer::run(bool isBreak) {
-    DateTime dt(*this);
-    Timer breakTimer = getBreakTimer();
-
+void Timer::printHeadline(bool isBreak) {
     clear();
     if (isBreak) {
         cout << "Break";
@@ -50,6 +47,12 @@ void Timer::run(bool isBreak) {
     cout << endl;
     printLine(7);
     cout << endl;
+}
+
+void Timer::run(bool isBreak) {
+    DateTime dt(*this);
+    Timer breakTimer = getBreakTimer();
+    printHeadline(isBreak);
 
     while (!isDone()) {
         cout << "\r" << str() << flush;
@@ -65,6 +68,8 @@ void Timer::run(bool isBreak) {
 
     if (breakTimer.getDurationInSeconds() > 10)
         breakTimer.run(true);
+
+    dt.printResult();
 }
 
 Timer Timer::getBreakTimer() {
