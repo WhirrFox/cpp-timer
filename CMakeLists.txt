@@ -13,6 +13,7 @@ add_executable(Timer main.cpp
         Util.h
         Util.cpp
         History.cpp
-        History.h)
+        History.h
+        Settings.h)
 
 target_link_libraries(Timer winmm)

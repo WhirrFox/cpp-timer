@@ -3,10 +3,8 @@
 #include <fstream>
 #include <cmath>
 #include "Util.h"
+#include "Settings.h"
 using namespace std;
-
-#define filename "log.csv"
-#define perPage 3
 
 void saveEntry(DateTime dt) {
     ofstream f;
