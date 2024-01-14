@@ -22,7 +22,7 @@ bool menu() {
 
     cout << "[n] new timer" << endl << "[h] history" << endl << "[q] quit" << endl;
     string a;
-    cin >> a;
+    getline(cin, a);
     switch (a[0]) {
         case 'n':
             createTimer().run();
