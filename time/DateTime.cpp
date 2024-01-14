@@ -55,7 +55,34 @@ DateTime::DateTime(Timer &t) : Time() {
     timer = t;
 }
 
+DateTime::DateTime(std::string s) : Time() {
+    year = stoi(s.substr(0, 4));
+    month = stoi(s.substr(5, 2));
+    date = stoi(s.substr(8, 2));
+    hour = stoi(s.substr(11, 2));
+    minute = stoi(s.substr(14, 2));
+    second = stoi(s.substr(17, 2));
+
+    timer.setHour(stoi(s.substr(20, 2)));
+    timer.setMinute(stoi(s.substr(23, 2)));
+    timer.setSecond(stoi(s.substr(26, 2)));
+}
+
 string DateTime::str() {
     return formatInt(year, 2) + "-" + formatInt(month, 2) + "-" + formatInt(date, 2) +
            "T" + Time::str() + "," + timer.str();
+}
+
+string DateTime::format() {
+    ostringstream o;
+    o << formatInt(date, 2) << '.' << formatInt(month, 2) << '.' << year << ' '
+      << formatInt(hour, 2) << ':' << formatInt(minute, 2) << ':' << formatInt(second, 2)
+      << "\t";
+    if (timer.getHour() > 0)
+        o << timer.getHour() << "h ";
+    if (timer.getMinute() > 0)
+        o << timer.getMinute() << "m ";
+    if (timer.getSecond() > 0)
+        o << timer.getSecond() << "s";
+    return o.str();
 }

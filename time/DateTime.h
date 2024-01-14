@@ -16,7 +16,11 @@ public:
     DateTime(int year, int month, int date, int hour, int minute, int second);
     DateTime(Timer &t);
 
+    DateTime(std::string s);
+
     std::string str();
+
+    std::string format();
 
     int getDate() const;
     void setDate(int date);

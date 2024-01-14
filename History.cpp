@@ -39,7 +39,8 @@ void printPage(int count, int p) {
     int lines = offset < 0 ? offset * -1 : 0;
     for (int i = lines; i < perPage; i++) {
         getline(f, s);
-        cout << s << endl;
+        DateTime d(s);
+        cout << d.format() << endl;
     }
 
     f.close();
