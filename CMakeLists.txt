@@ -16,4 +16,6 @@ add_executable(Timer main.cpp
         History.h
         Settings.h)
 
-target_link_libraries(Timer winmm)
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    target_link_libraries(Timer winmm)
+endif ()
