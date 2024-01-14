@@ -8,4 +8,6 @@ void saveEntry(DateTime dt);
 
 void historyMenu();
 
+std::string getTimeLearnedToday();
+
 #endif //TIMER_HISTORY_H

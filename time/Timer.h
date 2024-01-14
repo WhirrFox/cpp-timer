@@ -27,6 +27,10 @@ public:
     void setName(const std::string &name);
 
     int getDurationInSeconds();
+
+    std::string format();
+
+    Timer operator+(Timer t);
 };
 
 Timer createTimer();

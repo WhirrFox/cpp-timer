@@ -74,3 +74,25 @@ void historyMenu() {
         }
     }
 }
+
+string getTimeLearnedToday() {
+    DateTime today{};
+    Timer t{};
+
+    ifstream f(filename);
+
+    string s;
+    while (getline(f, s)) {
+        DateTime d(s);
+        if (d.isSameDate(today)) {
+            t = t + d.getTimer();
+        }
+    }
+
+    f.close();
+
+    if (t.getDurationInSeconds() == 0) {
+        return "";
+    }
+    return t.format();
+}

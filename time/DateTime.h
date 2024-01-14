@@ -13,6 +13,7 @@ private:
 
     void init();
 public:
+    DateTime();
     DateTime(int year, int month, int date, int hour, int minute, int second);
     DateTime(Timer &t);
 
@@ -22,12 +23,16 @@ public:
 
     std::string format();
 
+    bool isSameDate(DateTime &d);
+
     int getDate() const;
     void setDate(int date);
     int getMonth() const;
     void setMonth(int month);
     int getYear() const;
     void setYear(int year);
+
+    Timer getTimer();
 };
 
 

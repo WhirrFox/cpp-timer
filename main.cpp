@@ -9,6 +9,11 @@ bool menu() {
     clear();
     cout << "Timer" << endl;
     printLine(15);
+    cout << endl;
+
+    string leanedToday = getTimeLearnedToday();
+    if (!leanedToday.empty())
+        cout << "Today you leaned " << leanedToday << endl << endl;
 
     cout << "[n] new timer" << endl << "[h] history" << endl << "[q] quit" << endl;
     string a;

@@ -85,6 +85,21 @@ int Timer::getDurationInSeconds() {
     return hour * 360 + minute * 60 + second;
 }
 
+string Timer::format() {
+    ostringstream o;
+    if (hour > 0)
+        o << hour << "h ";
+    if (minute > 0)
+        o << minute << "m ";
+    if (second > 0)
+        o << second << "s";
+    return o.str();
+}
+
+Timer Timer::operator+(Timer t) {
+    return Timer(getDurationInSeconds() + t.getDurationInSeconds());
+}
+
 Timer createTimer() {
     Timer t;
     clear();

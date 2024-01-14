@@ -50,6 +50,10 @@ DateTime::DateTime(int year, int month, int date, int hour, int minute, int seco
     this->date = date;
 }
 
+DateTime::DateTime() {
+    init();
+}
+
 DateTime::DateTime(Timer &t) : Time() {
     init();
     timer = t;
@@ -81,14 +85,14 @@ string DateTime::format() {
     ostringstream o;
     o << formatInt(date, 2) << '.' << formatInt(month, 2) << '.' << year << ' '
       << formatInt(hour, 2) << ':' << formatInt(minute, 2) << ':' << formatInt(second, 2)
-      << "\t";
-    if (timer.getHour() > 0)
-        o << timer.getHour() << "h ";
-    if (timer.getMinute() > 0)
-        o << timer.getMinute() << "m ";
-    if (timer.getSecond() > 0)
-        o << timer.getSecond() << "s";
-
-    o << '\t' << timer.getName();
+                                                                  << "\t" << timer.format() << '\t' << timer.getName();
     return o.str();
+}
+
+bool DateTime::isSameDate(DateTime &d) {
+    return year == d.year && month == d.month && date == d.date;
+}
+
+Timer DateTime::getTimer() {
+    return timer;
 }
