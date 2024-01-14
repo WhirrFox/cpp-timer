@@ -64,7 +64,7 @@ void Timer::run(bool isBreak) {
 
 Timer Timer::getBreakTimer() {
     int seconds = getDurationInSeconds();
-    seconds /= timerDevider;
+    seconds /= timerDivider;
 
     int newHours = seconds / 3600;
     seconds %= 3600;

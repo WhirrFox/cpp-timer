@@ -9,7 +9,7 @@
 #define perPage 3
 
 // Timer: Divider of break time (default: 5)
-#define timerDevider 5
+#define timerDivider 5
 
 // Timer: Turn on sound effect on timer completion (Windows only, default: true)
 #define enableSound true
