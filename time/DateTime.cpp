@@ -3,6 +3,7 @@
 #include <ctime>
 #include <iostream>
 #include "../Util.h"
+#include "../Settings.h"
 
 using namespace std;
 
@@ -107,10 +108,14 @@ void DateTime::printResult() {
     }
 
     cout << endl << "Time learned: " << timer.format() << endl;
-    string breakTime = timer.getBreakTimer().format();
 
-    if (!breakTime.empty())
-        cout << "Break time: " << breakTime << endl;
+    Timer breakTime = timer.getBreakTimer();
+    if (breakTime.getDurationInSeconds() >= minBreakTime) {
+        cout << "Break time: " << breakTime.format() << endl;
+    } else {
+        cout << "Break didn't happen because timer was too short." << endl;
+    }
+
 
     cout << endl << "Press return to go back to main menu";
 

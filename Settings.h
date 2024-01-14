@@ -14,4 +14,7 @@
 // Timer: Turn on sound effect on timer completion (Windows only, default: true)
 #define enableSound true
 
+// Break: Minimum break time for break to happen (in seconds, default: 10)
+#define minBreakTime 10
+
 #endif //TIMER_SETTINGS_H

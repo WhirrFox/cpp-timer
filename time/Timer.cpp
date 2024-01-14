@@ -39,7 +39,7 @@ void Timer::printHeadline(bool isBreak) {
     if (isBreak) {
         cout << "Break";
     } else {
-        cout << "Work";
+        cout << "Learn";
     }
     if (!name.empty()) {
         cout << " - " << name;
@@ -66,7 +66,7 @@ void Timer::run(bool isBreak) {
 
     saveEntry(dt);
 
-    if (breakTimer.getDurationInSeconds() > 10)
+    if (breakTimer.getDurationInSeconds() >= minBreakTime)
         breakTimer.run(true);
 
     dt.printResult();

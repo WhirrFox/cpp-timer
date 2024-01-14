@@ -18,7 +18,7 @@ bool menu() {
             "                                                \n"; //font: Big Money-ne
     string leanedToday = getTimeLearnedToday();
     if (!leanedToday.empty())
-        cout << "Today you worked " << leanedToday << endl << endl;
+        cout << "Today you learned " << leanedToday << endl << endl;
 
     cout << "[n] new timer" << endl << "[h] history" << endl << "[q] quit" << endl;
     string a;
