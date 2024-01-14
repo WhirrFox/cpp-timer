@@ -42,12 +42,17 @@ void Timer::run(bool isBreak) {
 
     clear();
     if (isBreak) {
-        cout << "Break" << endl;
+        cout << "Break";
     } else {
-        cout << "Work" << endl;
+        cout << "Work";
     }
-
+    if (!name.empty()) {
+        cout << " - " << name;
+    }
+    cout << endl;
     printLine(7);
+    cout << endl;
+
     while (!isDone()) {
         cout << "\r" << str() << flush;
         tick();
