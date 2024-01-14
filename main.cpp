@@ -7,10 +7,15 @@ using namespace std;
 
 bool menu() {
     clear();
-    cout << "Timer" << endl;
-    printLine(15);
-    cout << endl;
-
+    cout << " /$$$$$$$$ /$$                                  \n"
+            "|__  $$__/|__/                                  \n"
+            "   | $$    /$$ /$$$$$$/$$$$   /$$$$$$   /$$$$$$ \n"
+            "   | $$   | $$| $$_  $$_  $$ /$$__  $$ /$$__  $$\n"
+            "   | $$   | $$| $$ \\ $$ \\ $$| $$$$$$$$| $$  \\__/\n"
+            "   | $$   | $$| $$ | $$ | $$| $$_____/| $$      \n"
+            "   | $$   | $$| $$ | $$ | $$|  $$$$$$$| $$      \n"
+            "   |__/   |__/|__/ |__/ |__/ \\_______/|__/      \n"
+            "                                                \n"; //font: Big Money-ne
     string leanedToday = getTimeLearnedToday();
     if (!leanedToday.empty())
         cout << "Today you leaned " << leanedToday << endl << endl;
