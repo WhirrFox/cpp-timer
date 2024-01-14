@@ -55,11 +55,13 @@ void Timer::run(bool isBreak) {
     }
     playSound();
 
-    if (isBreak || breakTimer.getDurationInSeconds() < 10)
+    if (isBreak)
         return;
 
     saveEntry(dt);
-    breakTimer.run(true);
+
+    if (breakTimer.getDurationInSeconds() > 10)
+        breakTimer.run(true);
 }
 
 Timer Timer::getBreakTimer() {
