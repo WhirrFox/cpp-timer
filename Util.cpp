@@ -1,5 +1,6 @@
 #include "Util.h"
 #include <iostream>
+#include "Settings.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -37,6 +38,7 @@ void printLine(int length) {
 
 void playSound() {
 #ifdef _WIN32
-    PlaySound("..\\sound.wav", NULL, SND_ASYNC);
+    if (enableSound)
+        PlaySound("..\\sound.wav", NULL, SND_ASYNC);
 #endif
 }

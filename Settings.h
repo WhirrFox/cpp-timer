@@ -5,5 +5,6 @@
 #define filename "log.csv"
 #define perPage 3
 #define timerDevider 5
+#define enableSound true
 
 #endif //TIMER_SETTINGS_H
